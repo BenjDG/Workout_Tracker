@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
-require('./routes')(app);
+app.use(routes);
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
