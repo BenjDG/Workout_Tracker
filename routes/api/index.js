@@ -26,7 +26,6 @@ router.put('/workouts/:id', (req, res) => {
 // POST /workouts
 router.post('/workouts', (req, res) => {
   db.Workout.create(req.body).then(r => {
-    console.log('new record created');
     res.status(200).json(r);
   });
 });

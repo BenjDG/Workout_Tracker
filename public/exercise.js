@@ -8,6 +8,8 @@ const setsInput = document.querySelector('#sets');
 const repsInput = document.querySelector('#reps');
 const durationInput = document.querySelector('#duration');
 const resistanceDurationInput = document.querySelector('#resistance-duration');
+
+// distance
 const distanceInput = document.querySelector('#distance');
 
 // complete and add exercise buttons
