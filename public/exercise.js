@@ -9,6 +9,8 @@ const repsInput = document.querySelector('#reps');
 const durationInput = document.querySelector('#duration');
 const resistanceDurationInput = document.querySelector('#resistance-duration');
 const distanceInput = document.querySelector('#distance');
+
+// complete and add exercise buttons
 const completeButton = document.querySelector('button.complete');
 const addButton = document.querySelector('button.add-another');
 const toast = document.querySelector('#toast');
@@ -19,10 +21,10 @@ let shouldNavigateAway = false;
 
 async function initExercise () {
   let workout;
-
   if (location.search.split('=')[1] === undefined) {
+    console.log("if 1 hit");
+    // create workout if no search id
     workout = await API.createWorkout();
-    console.log(workout);
   }
   if (workout) {
     location.search = '?id=' + workout._id;
@@ -94,6 +96,7 @@ function validateInputs () {
   }
 }
 
+// submit form section
 async function handleFormSubmit (event) {
   event.preventDefault();
 
@@ -112,12 +115,13 @@ async function handleFormSubmit (event) {
     workoutData.reps = Number(repsInput.value.trim());
     workoutData.duration = Number(resistanceDurationInput.value.trim());
   }
-
   await API.addExercise(workoutData);
   clearInputs();
+  // trigger toast
   toast.classList.add('success');
 }
 
+// toast animation end and navigate away
 function handleToastAnimationEnd () {
   toast.removeAttribute('class');
   if (shouldNavigateAway) {
@@ -136,18 +140,25 @@ function clearInputs () {
   weightInput.value = '';
 }
 
+// change type handler
 if (workoutTypeSelect) {
   workoutTypeSelect.addEventListener('change', handleWorkoutTypeChange);
 }
+
+// exercise complete button
 if (completeButton) {
   completeButton.addEventListener('click', function (event) {
     shouldNavigateAway = true;
     handleFormSubmit(event);
   });
 }
+
+// exercise add button
 if (addButton) {
   addButton.addEventListener('click', handleFormSubmit);
 }
+
+// toast animation?
 toast.addEventListener('animationend', handleToastAnimationEnd);
 
 document
