@@ -12,17 +12,12 @@ router.get('/workouts', (_req, res) => {
 router.put('/workouts/:id', (req, res) => {
   const id = req.params.id;
   const data = req.body;
-  console.log(id);
-  console.log('put ==========');
-  console.dir(data);
   db.Workout.findById(id, function (err, doc) {
     if (err) console.error(err);
     doc.exercises.push(data);
     doc.save();
   })
     .then(r => {
-      console.log('result2 ===============');
-      console.log(r);
       res.status(200).json(r);
     })
     .catch(err => console.error(err));
@@ -37,5 +32,10 @@ router.post('/workouts', (req, res) => {
 });
 
 // GET /workouts/range
+router.get('/workouts/range', (_req, res) => {
+  db.Workout.find({}).then(r => {
+    res.status(200).json(r);
+  });
+});
 
 module.exports = router;
