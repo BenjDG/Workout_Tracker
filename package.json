@@ -4,10 +4,12 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run lint",
     "start": "node server.js",
+    "lint": "semistandard --verbose | snazzy",
     "watch": "nodemon server.js",
-    "seed": "node seeders/seed.js"
+    "seed": "node seeders/seed.js",
+    "fix": "npx semistandard --fix"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +17,15 @@
     "express": "^4.16.3",
     "mongoose": "^5.3.16",
     "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "prettier-semi-cli": "^1.0.0",
+    "semistandard": "^16.0.0",
+    "snazzy": "^9.0.0"
+  },
+  "semistandard": {
+    "ignore": [
+      "/public"
+    ]
   }
 }
