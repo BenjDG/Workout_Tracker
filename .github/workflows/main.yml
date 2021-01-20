@@ -1,4 +1,4 @@
-name: Deploy
+name: Just Login Check
 
 on:
   push:
