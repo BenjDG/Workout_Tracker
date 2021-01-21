@@ -24,7 +24,6 @@ let shouldNavigateAway = false;
 async function initExercise () {
   let workout;
   if (location.search.split('=')[1] === undefined) {
-    console.log("if 1 hit");
     // create workout if no search id
     workout = await API.createWorkout();
   }
@@ -121,6 +120,7 @@ async function handleFormSubmit (event) {
   clearInputs();
   // trigger toast
   toast.classList.add('success');
+  validateInputs();
 }
 
 // toast animation end and navigate away
