@@ -2,6 +2,7 @@
 #  Workout Tracker
 
 ![GNU GPLv3 license](https://img.shields.io/badge/license-GNU%20GPLv3-brightgreen)
+![Heroku Continuous Deployment](https://github.com/BenjDG/Workout_Tracker/workflows/Heroku%20Continuous%20Deployment/badge.svg?branch=main)
 
 This application allows you to view, create and track daily workouts.  You can log multiple exercises on the current day.  You can also view statistics about the workouts that you have completed.
 
